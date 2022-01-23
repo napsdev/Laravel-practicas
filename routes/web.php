@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,10 +15,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 //Acceso a controlador
-Route::get('/', 'UserController@index');
+
+//Forma antigua de hacerlo
+//Route::get('/', 'UserController@index');
+//Forma de laravel 8
+Route::get('/',[UserController::class, 'index']);
 //Facilidad de acceso al nombrar la ruta
-Route::post('users', 'UserController@store')->name('user.store');
+Route::post('users',[UserController::class, 'store'])->name('user.store');
 //parametro del usuario
-Route::post('users/{user}', 'UserController@destroy')->name('user.destroy');
+Route::post('users/{user}',[UserController::class, 'destroy'])->name('user.destroy');
 
 
