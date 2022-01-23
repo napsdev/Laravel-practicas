@@ -13,7 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    //Vistas, resources views.
-    return view('welcome');
-});
+//Acceso a controlador
+Route::get('/', 'UserController@index');
+//Facilidad de acceso al nombrar la ruta
+Route::post('users', 'UserController@store')->name('user.store');
+//parametro del usuario
+Route::post('users/{user}', 'UserController@destroy')->name('user.destroy');
+
+
